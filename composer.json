@@ -5,8 +5,9 @@
     "license": "MIT",
     "require": {
         "zurb/foundation": "^6.5",
-        "cakephp/app": "^3.7",
-        "composer/composer": "^1.8"
+        "composer/composer": "^1.8",
+        "cakephp/cakephp": "^3.7",
+        "cakephp/plugin-installer": "^1.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7.14|^6.0"
