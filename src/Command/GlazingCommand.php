@@ -17,7 +17,7 @@ class GlazingCommand extends Command
     protected function buildOptionParser(ConsoleOptionParser $parser)
     {
         $parser
-            ->setDescription('Turntable Glaze will symlink the assets from zurb/foundation to the app webroot.')
+            ->setDescription('Glaze will symlink the assets from zurb/foundation to the webroot.')
             ->addOption('sass', [
                 'short' => 's',
                 'help' => 'Symlink sass files',
@@ -40,13 +40,13 @@ class GlazingCommand extends Command
      */
     public function execute(Arguments $args, ConsoleIo $io)
     {
-        $composerApplication = new Application();
         try {
+            $composerApplication = new Application();
             $composer = $composerApplication->getComposer(false, false);
             $zurbDirectory = $composer->getConfig()
                 ->get('vendor-dir') . DIRECTORY_SEPARATOR
-                . 'zurb' . DIRECTORY_SEPARATOR
-                . 'foundation' . DIRECTORY_SEPARATOR;
+                    . 'zurb' . DIRECTORY_SEPARATOR
+                    . 'foundation' . DIRECTORY_SEPARATOR;
             $distDirectory = $zurbDirectory . DIRECTORY_SEPARATOR . 'dist' . DIRECTORY_SEPARATOR;
             $symlinkedDirectories = [
                 [
@@ -68,20 +68,27 @@ class GlazingCommand extends Command
                     'link' => 'scss'
                 ]);
             }
+            $clean = $args->getOption('clean');
             foreach ($symlinkedDirectories as $directory) {
                 $scannedFiles = array_diff(scandir($directory['zurb']), ['..', '.']);
+                if(!$clean) {
+                    $io->out("Symlinking " . $directory['link']);
+                } else {
+                    $io->out("Cleaning " . $directory['link']);
+                }
+
                 foreach ($scannedFiles as $file) {
                     $target = $directory['zurb'] . DIRECTORY_SEPARATOR . $file;
                     $link = WWW_ROOT . $directory['link'] . DIRECTORY_SEPARATOR . $file;
                     if(file_exists($link)){
                         unlink($link);
                     }
-                    $clean = $args->getOption('clean');
                     if(file_exists($target) && !$clean) {
                         symlink($target, $link);
                     }
                 }
             }
+            $io->out("Glazing complete.");
         } catch (\Exception $exception) {
             $io->error('How did you get here?');
             $io->error($exception->getMessage());
