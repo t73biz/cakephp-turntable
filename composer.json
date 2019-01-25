@@ -1,10 +1,9 @@
 {
     "name": "t73biz/cakephp-turntable",
-    "description": "Turntable is a Foundation 6 solution for CakePHP 3.x using.",
+    "description": "Turntable is a Foundation 6 plugin solution for CakePHP 3.x",
     "type": "cakephp-plugin",
     "license": "MIT",
     "require": {
-        "cakephp/cakephp": "^3.5",
         "zurb/foundation": "^6.5"
     },
     "require-dev": {
@@ -17,11 +16,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Turntable\\Test\\": "tests/",
-            "Cake\\Test\\": "vendor/cakephp/cakephp/tests/"
+            "Turntable\\Test\\": "tests/"
         }
-    },
-    "scripts": {
-        "post-autoload-dump": "Turntable\\Plugin::postAutoloadDump"
     }
 }
