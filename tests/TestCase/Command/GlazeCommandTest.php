@@ -1,4 +1,5 @@
 <?php
+
 namespace Turntable\Test\TestCase\Command;
 
 use Cake\TestSuite\ConsoleIntegrationTestTrait;
@@ -30,10 +31,7 @@ class GlazeCommandTest extends TestCase
         try {
             $composerApplication = new Application();
             $this->composer = $composerApplication->getComposer(false, false);
-            $this->zurbDirectory = $this->composer->getConfig()
-                ->get('vendor-dir') . DIRECTORY_SEPARATOR
-                    . 'zurb' . DIRECTORY_SEPARATOR
-                    . 'foundation' . DIRECTORY_SEPARATOR;
+            $this->zurbDirectory = $this->composer->getConfig()->get('vendor-dir') . DIRECTORY_SEPARATOR . 'zurb' . DIRECTORY_SEPARATOR . 'foundation' . DIRECTORY_SEPARATOR;
         } catch (\Exception $exception) {
             echo $exception->getMessage();
         }
@@ -112,7 +110,7 @@ class GlazeCommandTest extends TestCase
         $this->exec('glaze -s');
         $this->assertOutputContains('Glazing complete.');
         $this->assertOutputContains('Symlinking scss');
-        $scannedScss = array_diff(scandir($this->zurbDirectory .  'scss'), ['..', '.']);
+        $scannedScss = array_diff(scandir($this->zurbDirectory . 'scss'), ['..', '.']);
         foreach ($scannedScss as $scss) {
             $this->assertFileExists(WWW_ROOT . 'scss' . DIRECTORY_SEPARATOR . $scss);
         }
@@ -126,7 +124,7 @@ class GlazeCommandTest extends TestCase
         $this->exec('glaze -c -s');
         $this->assertOutputContains('Glazing complete.');
         $this->assertOutputContains('Cleaning scss');
-        $scannedScss = array_diff(scandir($this->zurbDirectory .  'scss'), ['..', '.']);
+        $scannedScss = array_diff(scandir($this->zurbDirectory . 'scss'), ['..', '.']);
         foreach ($scannedScss as $scss) {
             $this->assertFileNotExists(WWW_ROOT . 'scss' . DIRECTORY_SEPARATOR . $scss);
         }

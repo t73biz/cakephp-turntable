@@ -10,6 +10,7 @@
  * @link          http://cakephp.org CakePHP(tm) Project
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
 use Cake\Core\Plugin;
@@ -44,68 +45,67 @@ mb_internal_encoding('UTF-8');
 
 Configure::write('debug', true);
 Configure::write('App', [
-  'namespace' => 'Turntable\TestApp',
-  'encoding' => 'UTF-8',
-  'base' => false,
-  'baseUrl' => false,
-  'dir' => 'src',
-  'webroot' => 'webroot',
-  'www_root' => APP . 'webroot',
-  'fullBaseUrl' => 'http://localhost',
-  'imageBaseUrl' => 'img/',
-  'jsBaseUrl' => 'js/',
-  'cssBaseUrl' => 'css/',
-  'paths' => [
-    'plugins' => [APP . 'Plugin' . DS],
-    'templates' => [APP . 'Template' . DS]
-  ]
+    'namespace' => 'Turntable\TestApp',
+    'encoding' => 'UTF-8',
+    'base' => false,
+    'baseUrl' => false,
+    'dir' => 'src',
+    'webroot' => 'webroot',
+    'www_root' => APP . 'webroot',
+    'fullBaseUrl' => 'http://localhost',
+    'imageBaseUrl' => 'img/',
+    'jsBaseUrl' => 'js/',
+    'cssBaseUrl' => 'css/',
+    'paths' => [
+        'plugins' => [APP . 'Plugin' . DS],
+        'templates' => [APP . 'Template' . DS]
+    ]
 ]);
 Configure::write('Session', [
-  'defaults' => 'php'
+    'defaults' => 'php'
 ]);
 
 Cache::setConfig([
-  '_cake_core_' => [
-    'engine' => 'File',
-    'prefix' => 'cake_core_',
-    'serialize' => true
-  ],
-  '_cake_model_' => [
-    'engine' => 'File',
-    'prefix' => 'cake_model_',
-    'serialize' => true
-  ],
-  'default' => [
-    'engine' => 'File',
-    'prefix' => 'default_',
-    'serialize' => true
-  ]
+    '_cake_core_' => [
+        'engine' => 'File',
+        'prefix' => 'cake_core_',
+        'serialize' => true
+    ],
+    '_cake_model_' => [
+        'engine' => 'File',
+        'prefix' => 'cake_model_',
+        'serialize' => true
+    ],
+    'default' => [
+        'engine' => 'File',
+        'prefix' => 'default_',
+        'serialize' => true
+    ]
 ]);
 
 // Ensure default test connection is defined
 if (!getenv('db_dsn')) {
-  putenv('db_dsn=sqlite://127.0.0.1/' . TMP . 'turntable_test.sqlite');
+    putenv('db_dsn=sqlite://127.0.0.1/' . TMP . 'turntable_test.sqlite');
 }
 
 $config = [
-  'url' => getenv('db_dsn'),
-  'timezone' => 'UTC',
+    'url' => getenv('db_dsn'),
+    'timezone' => 'UTC',
 ];
-
 
 // Use the test connection for 'debug_kit' as well.
 ConnectionManager::setConfig('test', $config);
 ConnectionManager::setConfig('test_turntable', $config);
 
 Log::setConfig([
-  'debug' => [
-    'engine' => 'Cake\Log\Engine\FileLog',
-    'levels' => ['notice', 'info', 'debug'],
-    'file' => 'debug',
-  ],
-  'error' => [
-    'engine' => 'Cake\Log\Engine\FileLog',
-    'levels' => ['warning', 'error', 'critical', 'alert', 'emergency'],
-    'file' => 'error',
-  ]
+    'debug' => [
+        'engine' => 'Cake\Log\Engine\FileLog',
+        'levels' => ['notice', 'info', 'debug'],
+        'file' => 'debug',
+    ],
+    'error' => [
+        'engine' => 'Cake\Log\Engine\FileLog',
+        'levels' => ['warning', 'error', 'critical', 'alert', 'emergency'],
+        'file' => 'error',
+    ]
 ]);

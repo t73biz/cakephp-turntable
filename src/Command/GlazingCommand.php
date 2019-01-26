@@ -1,4 +1,5 @@
 <?php
+
 namespace Turntable\Command;
 
 use Cake\Console\Arguments;
@@ -10,7 +11,7 @@ use Composer\Console\Application;
 class GlazingCommand extends Command
 {
     /**
-     * @param ConsoleOptionParser $parser
+     * @param ConsoleOptionParser $parser Console option parser
      *
      * @return \Cake\Console\ConsoleOptionParser|ConsoleOptionParser
      */
@@ -33,8 +34,8 @@ class GlazingCommand extends Command
     }
 
     /**
-     * @param Arguments $args
-     * @param ConsoleIo $io
+     * @param Arguments $args Arguments passed to the command
+     * @param ConsoleIo $io Console IO
      *
      * @return int|null|void
      */
@@ -43,10 +44,7 @@ class GlazingCommand extends Command
         try {
             $composerApplication = new Application();
             $composer = $composerApplication->getComposer(false, false);
-            $zurbDirectory = $composer->getConfig()
-                ->get('vendor-dir') . DIRECTORY_SEPARATOR
-                    . 'zurb' . DIRECTORY_SEPARATOR
-                    . 'foundation' . DIRECTORY_SEPARATOR;
+            $zurbDirectory = $composer->getConfig()->get('vendor-dir') . DIRECTORY_SEPARATOR . 'zurb' . DIRECTORY_SEPARATOR . 'foundation' . DIRECTORY_SEPARATOR;
             $distDirectory = $zurbDirectory . DIRECTORY_SEPARATOR . 'dist' . DIRECTORY_SEPARATOR;
             $symlinkedDirectories = [
                 [
@@ -59,8 +57,8 @@ class GlazingCommand extends Command
                 ]
             ];
             $sass = $args->getOption('sass');
-            if($sass) {
-                if(!is_dir(WWW_ROOT . 'scss')) {
+            if ($sass) {
+                if (!is_dir(WWW_ROOT . 'scss')) {
                     mkdir(WWW_ROOT . 'scss');
                 }
                 array_push($symlinkedDirectories, [
@@ -71,7 +69,7 @@ class GlazingCommand extends Command
             $clean = $args->getOption('clean');
             foreach ($symlinkedDirectories as $directory) {
                 $scannedFiles = array_diff(scandir($directory['zurb']), ['..', '.']);
-                if(!$clean) {
+                if (!$clean) {
                     $io->out("Symlinking " . $directory['link']);
                 } else {
                     $io->out("Cleaning " . $directory['link']);
@@ -80,10 +78,10 @@ class GlazingCommand extends Command
                 foreach ($scannedFiles as $file) {
                     $target = $directory['zurb'] . DIRECTORY_SEPARATOR . $file;
                     $link = WWW_ROOT . $directory['link'] . DIRECTORY_SEPARATOR . $file;
-                    if(file_exists($link)){
+                    if (file_exists($link)) {
                         unlink($link);
                     }
-                    if(file_exists($target) && !$clean) {
+                    if (file_exists($target) && !$clean) {
                         symlink($target, $link);
                     }
                 }

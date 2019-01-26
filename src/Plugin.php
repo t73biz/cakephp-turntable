@@ -26,7 +26,7 @@ class Plugin extends BasePlugin
     protected $routesEnabled = false;
 
     /**
-     * @param CommandCollection $commands
+     * @param CommandCollection $commands Command Collection
      *
      * @return $this|\Cake\Console\CommandCollection
      */

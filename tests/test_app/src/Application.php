@@ -1,4 +1,5 @@
 <?php
+
 namespace Turntable\TestApp;
 
 use Cake\Http\BaseApplication;
@@ -20,18 +21,18 @@ class Application extends BaseApplication
         $this->addPlugin('Turntable');
     }
 
-  /**
-   * Setup the middleware queue your application will use.
-   *
-   * @param \Cake\Http\MiddlewareQueue $middlewareQueue The middleware queue to setup.
-   * @return \Cake\Http\MiddlewareQueue The updated middleware queue.
-   */
-  public function middleware($middlewareQueue)
-  {
-    $middlewareQueue
-      // Handle plugin/theme assets like CakePHP normally does.
-      ->add(AssetMiddleware::class);
+    /**
+     * Setup the middleware queue your application will use.
+     *
+     * @param \Cake\Http\MiddlewareQueue $middlewareQueue The middleware queue to setup.
+     * @return \Cake\Http\MiddlewareQueue The updated middleware queue.
+     */
+    public function middleware($middlewareQueue)
+    {
+        $middlewareQueue
+            // Handle plugin/theme assets like CakePHP normally does.
+            ->add(AssetMiddleware::class);
 
-    return $middlewareQueue;
-  }
+        return $middlewareQueue;
+    }
 }
