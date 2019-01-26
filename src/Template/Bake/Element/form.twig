@@ -19,7 +19,7 @@
 <div class="{{ pluralVar }} form large-9 medium-8 columns content">
     <?= $this->Form->create(${{ singularVar }}) ?>
     <fieldset>
-        <legend><?= __('{{ action|humanize }} {{ singularHumanName }}') ?></legend>
+        <h2><?= __('{{ action|humanize }} {{ singularHumanName }}') ?></h2>
         <?php
 {% for field in fields if field not in primaryKey %}
     {%- if keyFields[field] %}

@@ -1,0 +1,35 @@
+#top-menu {
+  margin-bottom: 1.5rem;
+
+  div.top-bar-left {
+    ul {
+      li {
+        h1 {
+          font-size: 26px;
+          line-height: 0.75;
+          margin: 0;
+
+          a{
+            padding: .5rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+#sidebar-nav{
+  ul{
+    li:nth-child(1){
+      h2{
+        font-size: 26px;
+      }
+    }
+  }
+}
+
+.content {
+  h2 {
+    font-size: 26px;
+  }
+}
