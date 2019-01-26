@@ -2,8 +2,9 @@
 
 namespace Turntable;
 
+use Cake\Console\CommandCollection;
 use Cake\Core\BasePlugin;
-use Composer\Script\Event;
+use Turntable\Command\GlazingCommand;
 
 /**
  * Plugin for Turntable
@@ -17,10 +18,22 @@ class Plugin extends BasePlugin
      */
     protected $name = 'Turntable';
 
-    public function postAutoloadDump(Event $event)
-    {
-        $vendorDir = $event->getComposer()->getConfig()->get('vendor-dir');
+    /**
+     * Don't try to load routes.
+     *
+     * @var bool
+     */
+    protected $routesEnabled = false;
 
-        copy($vendorDir . '/zurb/foundation/dist/*', $vendorDir . '/t73biz/Turntable/webroot/');
+    /**
+     * @param CommandCollection $commands Command Collection
+     *
+     * @return $this|\Cake\Console\CommandCollection
+     */
+    public function console($commands)
+    {
+        $commands->add('glaze', GlazingCommand::class);
+
+        return $commands;
     }
 }
