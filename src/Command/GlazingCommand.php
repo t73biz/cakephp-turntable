@@ -49,25 +49,25 @@ class GlazingCommand extends Command
             $symlinkedDirectories = [
                 [
                     'zurb' => $distDirectory . 'css',
-                    'link' => 'css'
+                    'link' => 'css/foundation'
                 ],
                 [
                     'zurb' => $distDirectory . 'js',
-                    'link' => 'js'
+                    'link' => 'js/foundation'
                 ]
             ];
             $sass = $args->getOption('sass');
             if ($sass) {
-                if (!is_dir(WWW_ROOT . 'scss')) {
-                    mkdir(WWW_ROOT . 'scss');
-                }
                 array_push($symlinkedDirectories, [
                     'zurb' => $zurbDirectory . DIRECTORY_SEPARATOR . 'scss',
-                    'link' => 'scss'
+                    'link' => 'scss/foundation'
                 ]);
             }
             $clean = $args->getOption('clean');
             foreach ($symlinkedDirectories as $directory) {
+                if (!is_dir(WWW_ROOT . $directory['link'])) {
+                    mkdir(WWW_ROOT . $directory['link']);
+                }
                 $scannedFiles = array_diff(scandir($directory['zurb']), ['..', '.']);
                 if (!$clean) {
                     $io->out("Symlinking " . $directory['link']);

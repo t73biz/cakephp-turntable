@@ -14,9 +14,9 @@
  * @author        Ronald Chaplin (http://www.github.com/t73biz)
  */
 #}
-<nav class="columns" id="actions-sidebar">
-  <ul class="vertical side-nav menu">
-    <li class="heading"><?= __('Actions') ?></li>
+<nav class="cell small-4 medium-3 large-2" id="sidebar-nav">
+  <ul class="vertical menu">
+    <li><h2><?= __('Actions') ?></h2></li>
     <li><?= $this->Html->link(
       __('New {{ singularHumanName }}'),
       ['action' => 'add']) ?>
@@ -24,12 +24,12 @@
     {% if 'view' in action %}
       <li><?= $this->Html->link(
         __('Edit {{ singularHumanName }}'),
-        ['action' => 'edit', {{ pK|raw }}]) ?>
+        ['action' => 'edit', ${{ singularVar }}->{{ primaryKey[0] }}]) ?>
       </li>
     {% endif %}
     {% if 'edit' in action or 'view' in action %}
       <li><?= $this->Form->postLink(
-        __('Delete'),
+        __('Delete {{ singularHumanName }}'),
         ['action' => 'delete', ${{ singularVar }}->{{ primaryKey[0] }}],
         ['confirm' => __('Are you sure you want to delete # {0}?',
         ${{ singularVar }}->{{ primaryKey[0] }})]

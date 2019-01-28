@@ -4,9 +4,10 @@
  * @var \App\Model\Entity\Tag $tag
  */
 ?>
-<nav class="columns" id="actions-sidebar">
-  <ul class="vertical side-nav menu">
-    <li class="heading"><?= __('Actions') ?></li>
+<div class="grid-x grid-margin-x grid-padding-x">
+  <nav class="cell small-4 medium-3 large-2" id="sidebar-nav">
+  <ul class="vertical menu">
+    <li><h2><?= __('Actions') ?></h2></li>
     <li><?= $this->Html->link(
       __('New Tag'),
       ['action' => 'add']) ?>
@@ -16,7 +17,8 @@
       ['action' => 'index']) ?>
     </li>
 
-          <li><?= $this->Html->link(
+          <li><hr></li>
+      <li><?= $this->Html->link(
         __('List Articles'),
         ['controller' => 'Articles', 'action' => 'index']) ?>
       </li>
@@ -25,16 +27,17 @@
         ['controller' => 'Articles', 'action' => 'add']) ?>
       </li>
   </ul>
-</nav>
+</nav>  
 <div class="tags form large-9 medium-8 columns content">
-    <?= $this->Form->create($tag) ?>
-    <fieldset>
-        <legend><?= __('Add Tag') ?></legend>
+    <?= $this->FoundationForm->create($tag) ?>
+    <fieldset class="fieldset">
+        <h2><?= __('Add Tag') ?></h2>
         <?php
-            echo $this->Form->control('term');
-            echo $this->Form->control('articles._ids', ['options' => $articles]);
+            echo $this->FoundationForm->control('term');
+            echo $this->FoundationForm->control('articles._ids', ['options' => $articles]);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+    <?= $this->FoundationForm->button(__('Submit'),['class' => 'button success']) ?>
+    <?= $this->FoundationForm->end() ?>
+</div>
 </div>

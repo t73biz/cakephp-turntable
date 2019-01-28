@@ -4,9 +4,10 @@
  * @var \App\Model\Entity\Article $article
  */
 ?>
-<nav class="columns" id="actions-sidebar">
-  <ul class="vertical side-nav menu">
-    <li class="heading"><?= __('Actions') ?></li>
+<div class="grid-x grid-margin-x grid-padding-x">
+  <nav class="cell small-4 medium-3 large-2" id="sidebar-nav">
+  <ul class="vertical menu">
+    <li><h2><?= __('Actions') ?></h2></li>
     <li><?= $this->Html->link(
       __('New Article'),
       ['action' => 'add']) ?>
@@ -16,7 +17,8 @@
       ['action' => 'index']) ?>
     </li>
 
-          <li><?= $this->Html->link(
+          <li><hr></li>
+      <li><?= $this->Html->link(
         __('List Categories'),
         ['controller' => 'Categories', 'action' => 'index']) ?>
       </li>
@@ -24,6 +26,7 @@
         __('New Category'),
         ['controller' => 'Categories', 'action' => 'add']) ?>
       </li>
+      <li><hr></li>
       <li><?= $this->Html->link(
         __('List Tags'),
         ['controller' => 'Tags', 'action' => 'index']) ?>
@@ -33,18 +36,19 @@
         ['controller' => 'Tags', 'action' => 'add']) ?>
       </li>
   </ul>
-</nav>
+</nav>  
 <div class="articles form large-9 medium-8 columns content">
-    <?= $this->Form->create($article) ?>
-    <fieldset>
-        <legend><?= __('Add Article') ?></legend>
+    <?= $this->FoundationForm->create($article) ?>
+    <fieldset class="fieldset">
+        <h2><?= __('Add Article') ?></h2>
         <?php
-            echo $this->Form->control('category_id', ['options' => $categories]);
-            echo $this->Form->control('title');
-            echo $this->Form->control('content');
-            echo $this->Form->control('tags._ids', ['options' => $tags]);
+            echo $this->FoundationForm->control('category_id', ['options' => $categories]);
+            echo $this->FoundationForm->control('title');
+            echo $this->FoundationForm->control('content');
+            echo $this->FoundationForm->control('tags._ids', ['options' => $tags]);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+    <?= $this->FoundationForm->button(__('Submit'),['class' => 'button success']) ?>
+    <?= $this->FoundationForm->end() ?>
+</div>
 </div>
