@@ -1,0 +1,11 @@
+{
+  "name": "Turntable",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:t73biz/cakephp-turntable.git",
+  "author": "Ronald Chaplin <ron.g.chaplin@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "gulp-sass": "^3.2.1"
+  }
+}

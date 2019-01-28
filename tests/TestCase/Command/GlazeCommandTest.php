@@ -56,7 +56,7 @@ class GlazeCommandTest extends TestCase
         $this->assertOutputContains('Symlinking css');
         $scannedCss = array_diff(scandir($this->zurbDirectory . 'dist' . DIRECTORY_SEPARATOR . 'css'), ['..', '.']);
         foreach ($scannedCss as $css) {
-            $this->assertFileExists(WWW_ROOT . 'css' . DIRECTORY_SEPARATOR . $css);
+            $this->assertFileExists(WWW_ROOT . 'css' . DIRECTORY_SEPARATOR . 'foundation' . DIRECTORY_SEPARATOR . $css);
         }
     }
 
@@ -70,7 +70,7 @@ class GlazeCommandTest extends TestCase
         $this->assertOutputContains('Cleaning css');
         $scannedCss = array_diff(scandir($this->zurbDirectory . 'dist' . DIRECTORY_SEPARATOR . 'css'), ['..', '.']);
         foreach ($scannedCss as $css) {
-            $this->assertFileNotExists(WWW_ROOT . 'css' . DIRECTORY_SEPARATOR . $css);
+            $this->assertFileNotExists(WWW_ROOT . 'css' . DIRECTORY_SEPARATOR . 'foundation' . DIRECTORY_SEPARATOR . $css);
         }
     }
 
@@ -84,7 +84,7 @@ class GlazeCommandTest extends TestCase
         $this->assertOutputContains('Symlinking js');
         $scannedJs = array_diff(scandir($this->zurbDirectory . 'dist' . DIRECTORY_SEPARATOR . 'js'), ['..', '.']);
         foreach ($scannedJs as $js) {
-            $this->assertFileExists(WWW_ROOT . 'js' . DIRECTORY_SEPARATOR . $js);
+            $this->assertFileExists(WWW_ROOT . 'js' . DIRECTORY_SEPARATOR . 'foundation' . DIRECTORY_SEPARATOR . $js);
         }
     }
 
@@ -98,7 +98,7 @@ class GlazeCommandTest extends TestCase
         $this->assertOutputContains('Cleaning js');
         $scannedJs = array_diff(scandir($this->zurbDirectory . 'dist' . DIRECTORY_SEPARATOR . 'js'), ['..', '.']);
         foreach ($scannedJs as $js) {
-            $this->assertFileNotExists(WWW_ROOT . 'js' . DIRECTORY_SEPARATOR . $js);
+            $this->assertFileNotExists(WWW_ROOT . 'js' . DIRECTORY_SEPARATOR . 'foundation' . DIRECTORY_SEPARATOR . $js);
         }
     }
 
@@ -112,7 +112,7 @@ class GlazeCommandTest extends TestCase
         $this->assertOutputContains('Symlinking scss');
         $scannedScss = array_diff(scandir($this->zurbDirectory . 'scss'), ['..', '.']);
         foreach ($scannedScss as $scss) {
-            $this->assertFileExists(WWW_ROOT . 'scss' . DIRECTORY_SEPARATOR . $scss);
+            $this->assertFileExists(WWW_ROOT . 'scss' . DIRECTORY_SEPARATOR . 'foundation' . DIRECTORY_SEPARATOR . $scss);
         }
     }
 
@@ -126,7 +126,7 @@ class GlazeCommandTest extends TestCase
         $this->assertOutputContains('Cleaning scss');
         $scannedScss = array_diff(scandir($this->zurbDirectory . 'scss'), ['..', '.']);
         foreach ($scannedScss as $scss) {
-            $this->assertFileNotExists(WWW_ROOT . 'scss' . DIRECTORY_SEPARATOR . $scss);
+            $this->assertFileNotExists(WWW_ROOT . 'scss' . DIRECTORY_SEPARATOR . 'foundation' . DIRECTORY_SEPARATOR . $scss);
         }
     }
 }

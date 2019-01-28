@@ -25,33 +25,45 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?>
-
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('style.css') ?>
-
     <?= $this->fetch('meta') ?>
+
+    <?= $this->Html->css('foundation/foundation.min') ?>
+    <?= $this->Html->css('Turntable.style') ?>
     <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
 </head>
 <body>
-    <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
-            </li>
-        </ul>
-        <div class="top-bar-section">
-            <ul class="right">
+    <div class="title-bar" data-responsive-toggle="top-menu" data-hide-for="medium">
+        <button class="menu-icon" type="button" data-toggle></button>
+        <div class="title-bar-title">Menu</div>
+    </div>
+    <div class="top-bar" id="top-menu">
+        <div class="top-bar-left">
+            <ul class="menu">
+                <li class="menu-text">
+                    <h1>
+                        <a href=""><?= $this->fetch('title') ?></a>
+                    </h1>
+                </li>
+            </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="menu">
                 <li><a target="_blank" href="https://book.cakephp.org/3.0/">Documentation</a></li>
                 <li><a target="_blank" href="https://api.cakephp.org/3.0/">API</a></li>
             </ul>
         </div>
-    </nav>
+    </div>
+
     <?= $this->Flash->render() ?>
-    <div class="container clearfix">
+    <div class="grid-container fluid">
         <?= $this->fetch('content') ?>
     </div>
+
     <footer>
     </footer>
+    <?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js') ?>
+    <?= $this->Html->script('foundation/foundation.min') ?>
+    <?= $this->Html->script('Turntable.app') ?>
+    <?= $this->fetch('script') ?>
 </body>
 </html>

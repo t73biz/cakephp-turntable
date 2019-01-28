@@ -2,6 +2,7 @@
 {% for type, data in associations %}
   {%- for alias, details in data %}
     {%- if details.controller is not same as(_view.name) and details.controller not in done %}
+      <li><hr></li>
       <li><?= $this->Html->link(
         __('List {{ alias|underscore|humanize }}'),
         ['controller' => '{{ details.controller }}', 'action' => 'index']) ?>

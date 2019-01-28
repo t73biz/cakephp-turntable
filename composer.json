@@ -2,6 +2,7 @@
     "name": "t73biz/cakephp-turntable",
     "description": "Turntable is a Foundation 6 plugin solution for CakePHP 3.x",
     "type": "cakephp-plugin",
+    "version": "1.0.0",
     "license": "MIT",
     "require": {
         "zurb/foundation": "^6.5",
