@@ -25,38 +25,4 @@ class FoundationFormHelper extends FormHelper
 
         parent::__construct($View, $config);
     }
-
-    /**
-     * Render a named widget.
-     *
-     * This is a lower level method. For built-in widgets, you should be using
-     * methods like `text`, `hidden`, and `radio`. If you are using additional
-     * widgets you should use this method render the widget without the label
-     * or wrapping div.
-     *
-     * @param string $name The name of the widget. e.g. 'text'.
-     * @param array $data The data to render.
-     * @return string
-     * @throws \ReflectionException
-     */
-    public function widget($name, array $data = [])
-    {
-        if ($name === 'hidden') {
-            $this->_defaultConfig['templates']['input'] = '<input type="{{type}}" name="{{name}}"{{attrs}}/>';
-        }
-        $secure = null;
-        if (isset($data['secure'])) {
-            $secure = $data['secure'];
-            unset($data['secure']);
-        }
-        $widget = $this->_locator->get($name);
-        $out = $widget->render($data, $this->context());
-        if (isset($data['name']) && $secure !== null && $secure !== self::SECURE_SKIP) {
-            foreach ($widget->secureFields($data) as $field) {
-                $this->_secure($secure, $this->_secureFieldName($field));
-            }
-        }
-
-        return $out;
-    }
 }

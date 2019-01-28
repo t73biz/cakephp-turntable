@@ -4,15 +4,16 @@
  * @var \App\Model\Entity\Category $category
  */
 ?>
-<nav class="columns" id="actions-sidebar">
-  <ul class="vertical side-nav menu">
-    <li class="heading"><?= __('Actions') ?></li>
+<div class="grid-x grid-margin-x grid-padding-x">
+  <nav class="cell small-4 medium-3 large-2" id="sidebar-nav">
+  <ul class="vertical menu">
+    <li><h2><?= __('Actions') ?></h2></li>
     <li><?= $this->Html->link(
       __('New Category'),
       ['action' => 'add']) ?>
     </li>
               <li><?= $this->Form->postLink(
-        __('Delete'),
+        __('Delete Category'),
         ['action' => 'delete', $category->id],
         ['confirm' => __('Are you sure you want to delete # {0}?',
         $category->id)]
@@ -24,7 +25,8 @@
       ['action' => 'index']) ?>
     </li>
 
-          <li><?= $this->Html->link(
+          <li><hr></li>
+      <li><?= $this->Html->link(
         __('List Articles'),
         ['controller' => 'Articles', 'action' => 'index']) ?>
       </li>
@@ -33,15 +35,16 @@
         ['controller' => 'Articles', 'action' => 'add']) ?>
       </li>
   </ul>
-</nav>
+</nav>  
 <div class="categories form large-9 medium-8 columns content">
-    <?= $this->Form->create($category) ?>
-    <fieldset>
-        <legend><?= __('Edit Category') ?></legend>
+    <?= $this->FoundationForm->create($category) ?>
+    <fieldset class="fieldset">
+        <h2><?= __('Edit Category') ?></h2>
         <?php
-            echo $this->Form->control('name');
+            echo $this->FoundationForm->control('name');
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+    <?= $this->FoundationForm->button(__('Submit'),['class' => 'button success']) ?>
+    <?= $this->FoundationForm->end() ?>
+</div>
 </div>
