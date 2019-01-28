@@ -6,6 +6,11 @@ use Cake\View\View;
 
 class FoundationFormHelper extends FormHelper
 {
+    /**
+     * FoundationFormHelper constructor.
+     * @param View $View The View object
+     * @param array $config Configuration of the Helper
+     */
     public function __construct(View $View, array $config = [])
     {
         $this->_defaultConfig['templates']['label'] = '<div class="medium-2 cell"><label{{attrs}}>{{text}}</label></div>';
@@ -36,7 +41,7 @@ class FoundationFormHelper extends FormHelper
      */
     public function widget($name, array $data = [])
     {
-        if($name === 'hidden') {
+        if ($name === 'hidden') {
             $this->_defaultConfig['templates']['input'] = '<input type="{{type}}" name="{{name}}"{{attrs}}/>';
         }
         $secure = null;

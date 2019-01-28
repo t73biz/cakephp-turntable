@@ -1,4 +1,5 @@
 <?php
+
 namespace Turntable\View\Widget;
 
 use Cake\View\Form\ContextInterface;
@@ -9,7 +10,8 @@ use Cake\View\Widget\BasicWidget;
  *
  * This will render hidden inputs and display them properly.
  */
-class HiddenWidget extends BasicWidget {
+class HiddenWidget extends BasicWidget
+{
     /**
      * Render a hidden input.
      *
@@ -38,8 +40,7 @@ class HiddenWidget extends BasicWidget {
         // Override the template string
         $this->_templates->remove('input');
         $this->_templates->add(['input' => '<input type="{{type}}" name="{{name}}"{{attrs}}/>']);
-
-        $hidden =  $this->_templates->format('input', [
+        $hidden = $this->_templates->format('input', [
             'name' => $data['name'],
             'type' => $data['type'],
             'templateVars' => $data['templateVars'],
